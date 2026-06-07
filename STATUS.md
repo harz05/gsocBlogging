@@ -31,7 +31,7 @@ Two repos are in play:
 | PR #24 | Fix for incorrect output from grouped Conv (gemm_n / fAttrGroup) | OPEN | https://github.com/ML4EP/SOFIE/pull/24 |
 | Issue #25 | Move WeightVecKernel out of infer() into session init (A1) | OPEN (no PR yet) | https://github.com/ML4EP/SOFIE/issues/25 |
 | Issue #26 | MaxPool has no GPU implementation | OPEN | https://github.com/ML4EP/SOFIE/issues/26 |
-| PR #27 | MaxPool 1D, 2D and 3D GPU support + tests | OPEN | https://github.com/ML4EP/SOFIE/pull/27 |
+| PR #27 | Pool (MaxPool, AvgPool, GlobalAveragePool) GPU support + tests | OPEN | https://github.com/ML4EP/SOFIE/pull/27 |
 | PR #28 | Fix wrong pad indices in Pool for asym padding (port of root #22438) | OPEN | https://github.com/ML4EP/SOFIE/pull/28 |
 | Issue #29 | Batch the non-grouped Conv GEMM with gemmStridedBatched (A2) | OPEN | https://github.com/ML4EP/SOFIE/issues/29 |
 | PR #30 | Batch the non-grouped Conv GEMM with gemmStridedBatched | OPEN | https://github.com/ML4EP/SOFIE/pull/30 |
@@ -46,7 +46,7 @@ tracked separately here.
 - PR #22 -> [week1/conv-group-tests.md](week1/conv-group-tests.md)
 - Issue #23 / PR #24 -> [week1/grouped-conv-regression.md](week1/grouped-conv-regression.md)
 - Issue #25 (proposal) -> [week1/weightvec-init-optim.md](week1/weightvec-init-optim.md); implementation -> [week2/weightvec-init-A1-impl.md](week2/weightvec-init-A1-impl.md)
-- Issue #26 / PR #27 -> [week1/maxpool-gpu.md](week1/maxpool-gpu.md)
+- Issue #26 / PR #27 -> [week1/maxpool-gpu.md](week1/maxpool-gpu.md); AvgPool/GlobalAvgPool extension -> [week2/avgpool-globalavgpool-gpu.md](week2/avgpool-globalavgpool-gpu.md)
 - Issue #22436 / PR #22438 -> [week1/root-pool-asym-pad-bug.md](week1/root-pool-asym-pad-bug.md)
 - PR #28 -> [week2/pool-padfix-port.md](week2/pool-padfix-port.md)
 - Issue #22473 / PR #22474 -> [week2/conv-dilation-bug.md](week2/conv-dilation-bug.md)
