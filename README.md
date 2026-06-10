@@ -15,7 +15,8 @@ GSoC 2026 project page: https://summerofcode.withgoogle.com/programs/2026/projec
 - Week folders hold the polished writeups for what happened that period:
   - [community-bonding/](community-bonding/) — through 2026-05-24
   - [week1/](week1/) — 2026-05-25 to 05-31
-  - [week2/](week2/) — 2026-06-01 to 06-07 (in progress)
+  - [week2/](week2/) — 2026-06-01 to 06-07
+  - [week3/](week3/) — 2026-06-08 to 06-14 (in progress)
 
 ## The two repos
 
@@ -46,5 +47,10 @@ each is what surfaced the bug.
 | ROOT #22473 / #22474 Conv dilation | [week2/conv-dilation-bug.md](week2/conv-dilation-bug.md) |
 | fork #25 A1 implementation | [week2/weightvec-init-A1-impl.md](week2/weightvec-init-A1-impl.md) |
 | fork #29 / #30 A2 batched GEMM | [week2/conv-batched-gemm.md](week2/conv-batched-gemm.md) |
+| fork #31 Conv GPU bias / 1D / 3D tests | [week3/conv-dim-coverage-tests.md](week3/conv-dim-coverage-tests.md) |
+| fork #32 / #34 Conv dilation fix (GPU + CPU) | [week3/conv-dilation-fix.md](week3/conv-dilation-fix.md) |
+| fork #33 / #35 Conv SAME_UPPER autopad test | [week3/conv-autopad-upper-test.md](week3/conv-autopad-upper-test.md) |
+| ROOT #22523 AveragePool ceil_mode divisor | [week3/avgpool-ceilmode-bug.md](week3/avgpool-ceilmode-bug.md) |
+| ROOT #22552 Swish parser registration | [week3/swish-parser-gap.md](week3/swish-parser-gap.md) |
 
-See [STATUS.md](STATUS.md) for the full status table. Status is current as of 2026-06-04.
+See [STATUS.md](STATUS.md) for the full status table. Status is current as of 2026-06-10.

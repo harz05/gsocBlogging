@@ -1,7 +1,7 @@
 # Status of all issues and PRs
 
 The single index of everything raised and filed across the two repos. Status verified live via
-`gh` on 2026-06-04. Re-run the commands at the bottom to refresh.
+`gh` on 2026-06-10. Re-run the commands at the bottom to refresh.
 
 Two repos are in play:
 - **root-project/root** is upstream ROOT. SOFIE's CPU code generation lives here in
@@ -17,8 +17,10 @@ Two repos are in play:
 | PR #21730 | Fix Conv dynamic-shape output formula when stride > 1 | MERGED 2026-05-03 | https://github.com/root-project/root/pull/21730 |
 | Issue #22436 | MaxPool/AvgPool generate wrong code for asymmetric padding | CLOSED 2026-05-31 | https://github.com/root-project/root/issues/22436 |
 | PR #22438 | Fix MaxPool/AvgPool pad indices for asymmetric padding | MERGED 2026-05-31 | https://github.com/root-project/root/pull/22438 |
-| Issue #22473 | Conv generates invalid code and crashes for dilation > 1 | OPEN | https://github.com/root-project/root/issues/22473 |
-| PR #22474 | Fix double-counted dilation in Conv im2col + regression test | OPEN | https://github.com/root-project/root/pull/22474 |
+| Issue #22473 | Conv generates invalid code and crashes for dilation > 1 | CLOSED 2026-06-05 | https://github.com/root-project/root/issues/22473 |
+| PR #22474 | Fix double-counted dilation in Conv im2col + regression test | MERGED 2026-06-05 | https://github.com/root-project/root/pull/22474 |
+| Issue #22523 | AveragePool with ceil_mode divides the partial/overhang window by the full kernel size | OPEN | https://github.com/root-project/root/issues/22523 |
+| Issue #22552 | Register the existing Swish operator in the ONNX parser | OPEN | https://github.com/root-project/root/issues/22552 |
 
 ## Fork (ML4EP/SOFIE, base branch `gpu/alpaka`)
 
@@ -35,9 +37,14 @@ Two repos are in play:
 | PR #28 | Fix wrong pad indices in Pool for asym padding (port of root #22438) | OPEN | https://github.com/ML4EP/SOFIE/pull/28 |
 | Issue #29 | Batch the non-grouped Conv GEMM with gemmStridedBatched (A2) | OPEN | https://github.com/ML4EP/SOFIE/issues/29 |
 | PR #30 | Batch the non-grouped Conv GEMM with gemmStridedBatched | OPEN | https://github.com/ML4EP/SOFIE/pull/30 |
+| PR #31 | GTests for Conv GPU bias, 1D and 3D paths | OPEN | https://github.com/ML4EP/SOFIE/pull/31 |
+| Issue #32 | Conv generates wrong code for dilation > 1 (GPU silent-wrong, CPU segfault) | OPEN | https://github.com/ML4EP/SOFIE/issues/32 |
+| Issue #33 | Add GTest for Conv GPU SAME_UPPER autopad | OPEN | https://github.com/ML4EP/SOFIE/issues/33 |
+| PR #34 | Fix dilation>1 in Conv operator (GPU & CPU) | OPEN | https://github.com/ML4EP/SOFIE/pull/34 |
+| PR #35 | Add GTest for Conv GPU SAME_UPPER autopad | OPEN | https://github.com/ML4EP/SOFIE/pull/35 |
 
 PR #20 closes the earlier batch-test issue #18; #18 itself is referenced for context but is not
-tracked separately here.
+tracked separately here. PR #34 closes #32; PR #35 closes #33.
 
 ## Where each item is written up
 
@@ -51,22 +58,27 @@ tracked separately here.
 - PR #28 -> [week2/pool-padfix-port.md](week2/pool-padfix-port.md)
 - Issue #22473 / PR #22474 -> [week2/conv-dilation-bug.md](week2/conv-dilation-bug.md)
 - Issue #29 / PR #30 -> [week2/conv-batched-gemm.md](week2/conv-batched-gemm.md)
+- PR #31 -> [week3/conv-dim-coverage-tests.md](week3/conv-dim-coverage-tests.md)
+- Issue #32 / PR #34 -> [week3/conv-dilation-fix.md](week3/conv-dilation-fix.md)
+- Issue #33 / PR #35 -> [week3/conv-autopad-upper-test.md](week3/conv-autopad-upper-test.md)
+- Issue #22523 -> [week3/avgpool-ceilmode-bug.md](week3/avgpool-ceilmode-bug.md)
+- Issue #22552 -> [week3/swish-parser-gap.md](week3/swish-parser-gap.md)
 
-## Tally as of 2026-06-04
+## Tally as of 2026-06-10
 
-- 17 items tracked: 6 on upstream ROOT (3 issues, 3 PRs), 11 on the fork (5 issues, 6 PRs).
-- Merged: 2 ROOT PRs (#21730, #22438). Closed issues: 2 ROOT (#21729 fixed by #21730,
-  #22436 fixed by #22438).
-- Open: ROOT issue #22473 + PR #22474; fork issues #21, #23, #25, #26, #29 and PRs #20, #22,
-  #24, #27, #28, #30.
+- 24 items tracked: 8 on upstream ROOT (5 issues, 3 PRs), 16 on the fork (7 issues, 9 PRs).
+- Merged: 3 ROOT PRs (#21730, #22438, #22474). Closed issues: 3 ROOT (#21729 by #21730,
+  #22436 by #22438, #22473 by #22474).
+- Open: ROOT issues #22523, #22552; all 16 fork items (issues #21, #23, #25, #26, #29, #32, #33
+  and PRs #20, #22, #24, #27, #28, #30, #31, #34, #35).
 
 ## Refresh commands
 
 ```bash
 # fork items
-for n in 21 23 25 26 29; do gh issue view $n --repo ML4EP/SOFIE --json number,title,state; done
-for n in 20 22 24 27 28 30; do gh pr view $n --repo ML4EP/SOFIE --json number,title,state,mergedAt; done
+for n in 21 23 25 26 29 32 33; do gh issue view $n --repo ML4EP/SOFIE --json number,title,state; done
+for n in 20 22 24 27 28 30 31 34 35; do gh pr view $n --repo ML4EP/SOFIE --json number,title,state,mergedAt; done
 # upstream items
-for n in 21729 22436 22473; do gh issue view $n --repo root-project/root --json number,title,state; done
+for n in 21729 22436 22473 22523 22552; do gh issue view $n --repo root-project/root --json number,title,state; done
 for n in 21730 22438 22474; do gh pr view $n --repo root-project/root --json number,title,state,mergedAt; done
 ```
